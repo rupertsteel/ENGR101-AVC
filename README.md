@@ -11,3 +11,5 @@ We will be using C++11/C++14 for the programming language, but we won't be using
 We will be planing on using unit testing later on.
 
 The project plan is in google docs.
+
+The IP for the pi is 10.140.45.62
