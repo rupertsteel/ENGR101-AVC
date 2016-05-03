@@ -12,7 +12,7 @@ We will be planing on using unit testing later on.
 
 The project plan is in google docs.
 
-The IP for the pi is 10.140.102.163
+The IP for the pi is 10.140.45.62
 
 <h1>Weekly Checklist</h1>
 
@@ -30,3 +30,22 @@ The IP for the pi is 10.140.102.163
 * All team members were at the week's lab
 * Everyone has signed the AVC plan.
 * Everyone submitted the AVC group plan
+
+###Week 2 Checklist
+- [ ] All: Write background section
+- [ ] ~~Ben: Organise team meeting~~
+- [x] Ben: Create report template
+- [ ] Ryan, Mohsen and Milan: Create chassis design
+- [ ] Rupert and Harshita: Read about networking to open gate
+- [ ] Rupert and Harshita: Write code to open gate
+
+####Week 2 Review (1st May 2016)
+* This week was mid-tri break so we had a break.
+* Ben made the report template and shared it with the group
+* We decided that we didn't need to have a group meeting this week
+* We have set goals for next week ([Week 2 Checklist](#week-2-checklist))
+* All up to date files on Github (Woot! We made our first real code commit today!)
+* All team members were at the week's lab
+* Everyone has signed the AVC plan.
+* Everyone submitted the AVC group plan
+
