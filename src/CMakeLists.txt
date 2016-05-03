@@ -1,6 +1,8 @@
 
+cmake_minimum_required(VERSION 2.8)
+
 add_library(libe101 STATIC IMPORTED)
-set(libe101 IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libE101.so)
+set_target_properties(libe101 PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libE101.so)
 
 add_executable(robot main.cpp open-gate.cpp movement.cpp)
 
