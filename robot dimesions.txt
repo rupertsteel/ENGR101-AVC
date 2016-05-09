@@ -1,0 +1,5 @@
+Robot center to wheel: 4.55 cm
+Wheel to wheel: 9.1 cm
+
+Wheel outer diamater: 5.9 - 6 cm
+Wheel width: 0.7 cm
