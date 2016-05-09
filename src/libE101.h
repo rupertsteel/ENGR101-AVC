@@ -35,4 +35,8 @@ void openGate();
 /// This assumes that the libe101 library is initialized.
 void moveForward();
 
+// Turns the robot in a circle of a specific radius. 
+void turnLeftRadius(float radius);
+void turnRightRadius(float radius);
+
 #endif // LIB_E_101_H_
