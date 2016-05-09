@@ -16,6 +16,12 @@ extern "C" int set_motor(int motor , int speed );
 extern "C" int take_picture();
 extern "C" char get_pixel(int row, int col, int color);
 
+// robot dimensions
+// all dimensions are in metres
+#define ROBOT_WHEEL_RADIUS 0.0295f
+#define ROBOT_WHEEL_WIDTH 0.007f
+#define ROBOT_WHEEL_TO_CENTER 0.0455f
+
 
 // open-gate.cpp functions
 
