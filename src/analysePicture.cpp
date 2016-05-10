@@ -1,13 +1,37 @@
 #include "libE101.h"
 
-void analysePicture(){
+struct pictureAnalysisData {
+    float total_error;
+    float last_error;
+}
+
+void analysePicture(pictureAnalysisData& data){
     take_picture();
-    int sum = 0;
-    int whiteness;
+    
+    float kp = 0.5;
+    float ki = 0.5;
+    float kd = 0.5;
+    
+    //Proportional (P)
+    float sum = 0;
     for(int i = 0, i<320, i++){
-        whiteness = get_pixel(i,120,3);
+        int whiteness = get_pixel(i,120,3);
         if(whiteness>127){
-            sum = sum + (i-160);
+            sum += (i-160);
         }
     }
+    
+    float error = sum / 1000.0f;
+    
+    proportional_signal = error*kp;
+
+    //Integral(I)
+    data.total_error += error;
+    float integral_signal = data.total_error*ki;
+    
+    //Deriviate (D)
+    float error_period = 1.0f/90.0f
+    float error_diff = error - data.last_error;
+    float derivative_signal = (error_diff/error_period)*kd;
+    data.last_error = error;
 }
