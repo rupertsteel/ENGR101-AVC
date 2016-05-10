@@ -1,11 +1,6 @@
 #include "libE101.h"
 
-struct pictureAnalysisData {
-    float total_error;
-    float last_error;
-}
-
-void analysePicture(pictureAnalysisData& data){
+float analysePicture(pictureAnalysisData& data) {
     take_picture();
     
     float kp = 0.5;
@@ -34,4 +29,6 @@ void analysePicture(pictureAnalysisData& data){
     float error_diff = error - data.last_error;
     float derivative_signal = (error_diff/error_period)*kd;
     data.last_error = error;
+	
+	return integral_signal + derivative_signal + proportional_signal;
 }

@@ -39,4 +39,13 @@ void moveForward();
 void turnLeftRadius(float radius);
 void turnRightRadius(float radius);
 
+// analysePicture.cpp functions and structs
+
+struct pictureAnalysisData {
+    float total_error;
+    float last_error;
+};
+
+float analysePicture(pictureAnalysisData& data);
+
 #endif // LIB_E_101_H_
