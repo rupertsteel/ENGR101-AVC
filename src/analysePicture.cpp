@@ -18,14 +18,14 @@ float analysePicture(pictureAnalysisData& data) {
     
     float error = sum / 1000.0f;
     
-    proportional_signal = error*kp;
+    float proportional_signal = error*kp;
 
     //Integral(I)
     data.total_error += error;
     float integral_signal = data.total_error*ki;
     
     //Deriviate (D)
-    float error_period = 1.0f/90.0f
+    float error_period = 1.0f/90.0f;
     float error_diff = error - data.last_error;
     float derivative_signal = (error_diff/error_period)*kd;
     data.last_error = error;
