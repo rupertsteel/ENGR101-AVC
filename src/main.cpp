@@ -17,9 +17,9 @@ int main(int argc, char* argv[]) {
 		float signal = analysePicture(data);
 		
 		if (signal < -0.1f) {
-			turnLeftRadius(signal * turnResponse)
+			turnLeftRadius(turnResponse / signal);
 		} else if (signal > 0.1f) {
-			turnRightRadius(signal * turnResponse);
+			turnRightRadius(turnResponse / signal);
 		} else {
 			moveForward();
 		}
