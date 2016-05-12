@@ -9,10 +9,10 @@ float analysePicture(pictureAnalysisData& data) {
     
     //Proportional (P)
     float sum = 0;
-    for(int i = 0, i<320, i++){
-        int whiteness = get_pixel(i,120,3);
-        if(whiteness>127){
-            sum += (i-160);
+    for(int i = 0; i<320; i++){
+        int whiteness = get_pixel(i, 120, 3);
+        if(whiteness > 127){
+            sum += (i - 160);
         }
     }
     
