@@ -15,7 +15,7 @@ void handle_signal(int signal) {
 }
 
 int main(int argc, char* argv[]) {
-	init(1);
+	init(0);
 	
 	// set a signal handler to stop the motors when we exit the program with ^C
 	std::signal(SIGINT, handle_signal);

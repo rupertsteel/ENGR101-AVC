@@ -30,5 +30,10 @@ float analysePicture(pictureAnalysisData& data) {
     float derivative_signal = (error_diff/error_period)*kd;
     data.last_error = error;
 	
-	return integral_signal + derivative_signal + proportional_signal;
+	float totalSignal = integral_signal + derivative_signal + proportional_signal;
+	
+	printf("Error: %f, integral: %f, derivative: %f, signal: %f\n",
+		error, integral_signal, derivative_signal, totalSignal);
+	
+	return totalSignal;
 }
