@@ -20,21 +20,21 @@ int main(int argc, char* argv[]) {
 	// movement test
 	if (argc == 2 && strcmp(argv[1], "m") == 0) {
 		printf("Left wheel forward\n");
-		set_motor(1, 10);
+		set_motor(1, 25);
 		getchar();
 		
 		printf("Left wheel backwards\n");
-		set_motor(1, -10);
+		set_motor(1, -25);
 		getchar();
 		
 		set_motor(1, 0);
 		
 		printf("Right wheel forward\n");
-		set_motor(2, 10);
+		set_motor(2, 25);
 		getchar();
 		
 		printf("Right wheel backwards\n");
-		set_motor(2, -10);
+		set_motor(2, -25);
 		getchar();
 		
 		set_motor(2, 0);
