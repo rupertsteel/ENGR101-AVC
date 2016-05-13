@@ -15,12 +15,36 @@ int main(int argc, char* argv[]) {
 	
 	// set a signal handler to stop the motors when we exit the program with ^C
 	// code from https://gist.github.com/aspyct/3462238
-	sigaction sa;
+	struct sigaction sa;
 	sa.sa_handler = &handle_signal;
 	sa.sa_flags = SA_RESTART;
 	
 	sigfillset(&sa.sa_mask);
 	sigaction(SIGINT, &sa, NULL);
+	
+	// movement test
+	if (argc == 2 && strcmp(argv[1], "m") == 0) {
+		printf("Left wheel forward\n");
+		set_motor(1, 10);
+		getchar();
+		
+		printf("Left wheel backwards\n");
+		set_motor(1, -10);
+		getchar();
+		
+		set_motor(1, 0);
+		
+		printf("Right wheel forward\n");
+		set_motor(2, 10);
+		getchar();
+		
+		printf("Right wheel backwards\n");
+		set_motor(2, -10);
+		getchar();
+		
+		set_motor(2, 0);
+		return 0;
+	}
 	
 	//openGate(); // the gate server isn't up yet, so this will block
 	//moveForward();
