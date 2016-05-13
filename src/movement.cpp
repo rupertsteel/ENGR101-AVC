@@ -4,8 +4,8 @@
 #include <algorithm>
 
 void moveForward() {
-	set_motor(1, 255);
-	set_motor(2, 255);
+	set_motor(1, 25);
+	set_motor(2, 25);
 }
 
 void turnRightRadius(float radius) {
