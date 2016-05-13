@@ -3,6 +3,7 @@
 
 #include <csignal>
 #include <cstring>
+#include <cstdlib>
 
 void handle_signal(int signal) {
 	if (signal == SIGINT) {
