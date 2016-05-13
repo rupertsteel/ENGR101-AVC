@@ -16,7 +16,7 @@ void turnRightRadius(float radius) {
 	float rightWheelDrive = leftWheelDrive / leftWheelRadius * rightWheelRadius;
 	
 	// now normalize the values 
-	float driveMax = std::max(abs(leftWheelDrive), abs(rightWheelDrive) * 10;
+	float driveMax = std::max(abs(leftWheelDrive), abs(rightWheelDrive)) * 10;
 	leftWheelDrive /= driveMax;
 	rightWheelDrive /= driveMax;
 	
@@ -36,7 +36,7 @@ void turnLeftRadius(float radius) {
 	float leftWheelDrive = rightWheelDrive / rightWheelRadius * leftWheelRadius;
 	
 	// now normalize the values 
-	float driveMax = std::max(abs(leftWheelDrive), abs(rightWheelDrive) * 10;
+	float driveMax = std::max(abs(leftWheelDrive), abs(rightWheelDrive)) * 10;
 	leftWheelDrive /= driveMax;
 	rightWheelDrive /= driveMax;
 	
