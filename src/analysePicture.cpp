@@ -4,8 +4,8 @@ float analysePicture(pictureAnalysisData& data) {
     take_picture();
     
     float kp = 0.5;
-    float ki = 0.5;
-    float kd = 0.5;
+    float ki = 0;
+    float kd = 0;
     
     //Proportional (P)
     float sum = 0;
