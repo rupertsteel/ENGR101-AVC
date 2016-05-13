@@ -10,7 +10,7 @@ void handle_signal(int signal) {
 		set_motor(1, 0);
 		set_motor(2, 0);
 		
-		std::exit();
+		std::exit(0);
 	}
 }
 
