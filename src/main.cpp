@@ -40,6 +40,10 @@ int main(int argc, char* argv[]) {
 		return 0;
 	}
 	
+	if (argc == 2 && strcmp(argv[1], "g") == 0) {
+		openGate();
+	}
+	
 	//openGate(); // the gate server isn't up yet, so this will block
 	//moveForward();
 	
