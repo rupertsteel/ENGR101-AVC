@@ -2,6 +2,7 @@
 #include "libE101.h"
 
 #include <csignal>
+#include <cstring>
 
 void handle_signal(int signal) {
 	if (signal == SIGINT) {
