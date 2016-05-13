@@ -8,6 +8,8 @@ void handle_signal(int signal) {
 	if (signal == SIGINT) {
 		set_motor(1, 0);
 		set_motor(2, 0);
+		
+		std::exit();
 	}
 }
 
