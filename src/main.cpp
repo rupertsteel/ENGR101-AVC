@@ -1,7 +1,7 @@
 
 #include "libE101.h"
 
-#include <signal.h>
+#include <csignal>
 
 void handle_signal(int signal) {
 	if (signal == SIGINT) {
@@ -14,13 +14,7 @@ int main(int argc, char* argv[]) {
 	init(1);
 	
 	// set a signal handler to stop the motors when we exit the program with ^C
-	// code from https://gist.github.com/aspyct/3462238
-	struct sigaction sa;
-	sa.sa_handler = &handle_signal;
-	sa.sa_flags = SA_RESTART;
-	
-	sigfillset(&sa.sa_mask);
-	sigaction(SIGINT, &sa, NULL);
+	std::signal(SIGINT, handle_signal);
 	
 	// movement test
 	if (argc == 2 && strcmp(argv[1], "m") == 0) {
