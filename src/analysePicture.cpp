@@ -3,10 +3,6 @@
 float analysePicture(pictureAnalysisData& data) {
     take_picture();
     
-    float kp = 0.5;
-    float ki = 0;
-    float kd = 0;
-    
     //Proportional (P)
     float sum = 0;
     for(int i = 0; i<320; i++){
@@ -18,16 +14,16 @@ float analysePicture(pictureAnalysisData& data) {
     
     float error = sum / 1000.0f;
     
-    float proportional_signal = error*kp;
+    float proportional_signal = error*data.kp;
 
     //Integral(I)
     data.total_error += error;
-    float integral_signal = data.total_error*ki;
+    float integral_signal = data.total_error*data.ki;
     
     //Deriviate (D)
     float error_period = 1.0f/90.0f;
     float error_diff = error - data.last_error;
-    float derivative_signal = (error_diff/error_period)*kd;
+    float derivative_signal = (error_diff/error_period)*data.kd;
     data.last_error = error;
 	
 	float totalSignal = integral_signal + derivative_signal + proportional_signal;

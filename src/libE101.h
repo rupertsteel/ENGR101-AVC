@@ -44,6 +44,10 @@ void turnRightRadius(float radius);
 struct pictureAnalysisData {
     float total_error;
     float last_error;
+	
+	float kp;
+	float ki;
+	float kd;
 };
 
 float analysePicture(pictureAnalysisData& data);
