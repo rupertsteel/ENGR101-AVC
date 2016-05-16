@@ -69,18 +69,24 @@ int main(int argc, char* argv[]) {
 	//openGate(); // the gate server isn't up yet, so this will block
 	//moveForward();
 	
-	float turnResponse = 1;
+	float turnResponse = 0.01;
 	
 	while (true) {
 		float signal = analysePicture(data);
 		
-		if (signal < -0.1f) {
-			turnLeftRadius(turnResponse / signal);
-		} else if (signal > 0.1f) {
-			turnRightRadius(turnResponse / signal);
+		movementInfo movement;
+		movement.maxSpeed = 0.25f;
+		movement.leftWheelSpeed = 1;
+		movement.rightWheelSpeed = 1;
+		
+		
+		if (signal < 0) {
+			movement.rightWheelSpeed += std::abs(signal) * turnResponse;
 		} else {
-			moveForward();
-		}
+			movement.leftWheelSpeed += signal * turnResponse;
+		}		
+		
+		setMotors(movement);
 		
 		Sleep(0, 11111);
 	}
