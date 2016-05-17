@@ -53,6 +53,9 @@ int main(int argc, char* argv[]) {
 		return 0;
 	} else if (argc == 2 && strcmp(argv[1], "g") == 0) {
 		openGate();
+	} else if (argc == 2 && strcmp(argv[1], "c") == 0) {
+		take_picture();
+		display_picture(10, 0);
 	} else {
 		// provide custom values for the pid
 		if (argc >= 2) {
