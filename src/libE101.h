@@ -56,6 +56,8 @@ struct movementInfo {
 	float rightWheelSpeed;
 }
 
+void setMotors(movementInfo& info);
+
 float analysePicture(pictureAnalysisData& data);
 
 #endif // LIB_E_101_H_

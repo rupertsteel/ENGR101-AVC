@@ -56,13 +56,13 @@ int main(int argc, char* argv[]) {
 	} else {
 		// provide custom values for the pid
 		if (argc >= 2) {
-			data.kp = std::strtod(argv[1], nullptr);
+			data.kp = std::strtod(argv[1], NULL);
 		}
 		if (argc >= 3) {
-			data.ki = std::strtod(argv[2], nullptr);
+			data.ki = std::strtod(argv[2], NULL);
 		}
 		if (argc >= 4) {
-			data.kd = std::strtod(argv[3], nullptr);
+			data.kd = std::strtod(argv[3], NULL);
 		}
 	}
 	
@@ -81,7 +81,7 @@ int main(int argc, char* argv[]) {
 		
 		
 		if (signal < 0) {
-			movement.rightWheelSpeed += std::abs(signal) * turnResponse;
+			movement.rightWheelSpeed += -signal * turnResponse;
 		} else {
 			movement.leftWheelSpeed += signal * turnResponse;
 		}		
