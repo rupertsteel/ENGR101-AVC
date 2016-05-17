@@ -64,14 +64,30 @@ The IP for the pi is 10.140.103.192
 * All members attended the lab and all members attended atleast one of the 2 meetings we had
 
 ###Week 4 Checklist
-- [ ] All: Complete the draft for their section of the progress report by Friday
-- [ ] Ben: Proof read the report over the weekend, to be ready for hand in on Monday
-- [ ] Rupert: Write code for line following and implement it
-- [ ] Harshita: Help Rupert write the code and ensure it is properly laid out, in terms of methods etc.
-- [ ] Mohsen: Help people who are stuck with report writing, and help Milan and Mohsen to create a design to hold the IR sensors
-- [ ] Milan: Create IR sensor CAD design with Ryan and Mohsen
-- [ ] Ryan: Create IR sensor CAD design with Milan and Mohsen
+- [ ] ~~All: Complete the draft for their section of the progress report by Friday~~
+- [ ] ~~Ben: Proof read the report over the weekend, to be ready for hand in on Monday~~
+- [x] Rupert: Write code for line following and implement it
+- [x] Harshita: Help Rupert write the code and ensure it is properly laid out, in terms of methods etc.
+- [x] Mohsen: Help people who are stuck with report writing, and help Milan and Mohsen to create a design to hold the IR sensors
+- [x] Milan: Create IR sensor CAD design with Ryan and Mohsen
+- [x] Ryan: Create IR sensor CAD design with Milan and Mohsen
 
+####Week 4 Review(15th May 2016)
+* Half way through the week we got told that the report was actually an individual task, not a group task. This meant that a lot of the team members had jobs related to the report writing, and as the report is such a big project, a lot of the work done this week was regarding the report writing.
+* We found a 3D printed piece to connect the IR sensor and it fit perfectly. 
+* We have set goals for next week ([Week 5 Checklist](#week-5-checklist))
+* We have all realised that we do not have much time left and we have to prioritse testing and debugging code.
+* We uploaded a picture of the robot to GitHub and all relevant code is commited.
+* All members attended the lab and all attended atleast one of our 2 group meetings.
+* All members have completed and submitted their progress report.
+* We wrote the analysePicture.cpp and movement.cpp code
+* 
+
+###Week 5 Checklist
+- [ ] Harshita and Rupert: Improve analysePicture.cpp code and movement.cpp code to ensure the robot follows the line properly.
+- [ ] Ben: Help err'body
+- [ ] Rupert, Milan and Mohsen: Complete chassis design.
+- 
 
 ###Weekly Progress Checklist
 - [ ] How has each team member performed against their goal set last week?
