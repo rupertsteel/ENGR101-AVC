@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
 		float signal = analysePicture(data);
 		
 		movementInfo movement;
-		movement.maxSpeed = 0.20f;
+		movement.maxSpeed = 0.5f;
 		movement.leftWheelSpeed = 1;
 		movement.rightWheelSpeed = 1;
 		
