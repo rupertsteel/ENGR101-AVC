@@ -54,7 +54,7 @@ struct movementInfo {
 	float maxSpeed; // from 0 to 1, sets the max speed.
 	float leftWheelSpeed; // can be any value, left and right are normalized so that one is 1 or -1, we then multiply by the max speed
 	float rightWheelSpeed;
-}
+};
 
 void setMotors(movementInfo& info);
 
