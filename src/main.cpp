@@ -23,8 +23,6 @@ int main(int argc, char* argv[]) {
 	float maxSpeed = 0.5f;
 	
 	pictureAnalysisData data;
-	data.last_error = 0.0f;
-	data.total_error = 0.0f;
 	
 	data.kp = 0.5f;
 	data.ki = 0.0f;
