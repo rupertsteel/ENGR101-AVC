@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <time.h>
 
+#include <vector>
+
 // libe101 functions
 extern "C" int init(int d_lev);
 extern "C" int connect_to_server( char server_addr[15],int port);
@@ -49,7 +51,7 @@ struct pictureAnalysisRow {
 	float last_error;
 	float signal;
 	bool isRowEmpty;
-}
+};
 
 struct pictureAnalysisData {
     std::vector<pictureAnalysisRow> rows;
