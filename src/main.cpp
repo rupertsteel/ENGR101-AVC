@@ -20,6 +20,8 @@ int main(int argc, char* argv[]) {
 	// set a signal handler to stop the motors when we exit the program with ^C
 	std::signal(SIGINT, handle_signal);
 	
+	float maxSpeed = 0.5f;
+	
 	pictureAnalysisData data;
 	data.last_error = 0.0f;
 	data.total_error = 0.0f;
@@ -59,13 +61,16 @@ int main(int argc, char* argv[]) {
 	} else {
 		// provide custom values for the pid
 		if (argc >= 2) {
-			data.kp = std::strtod(argv[1], NULL);
+			maxSpeed = std::strtod(argv[1], NULL);
 		}
 		if (argc >= 3) {
-			data.ki = std::strtod(argv[2], NULL);
+			data.kp = std::strtod(argv[2], NULL);
 		}
 		if (argc >= 4) {
-			data.kd = std::strtod(argv[3], NULL);
+			data.ki = std::strtod(argv[3], NULL);
+		}
+		if (argc >= 5) {
+			data.kd = std::strtod(argv[4], NULL);
 		}
 	}
 	
@@ -78,7 +83,7 @@ int main(int argc, char* argv[]) {
 		float signal = analysePicture(data);
 		
 		movementInfo movement;
-		movement.maxSpeed = 0.75f;
+		movement.maxSpeed = maxSpeed;
 		movement.leftWheelSpeed = 1;
 		movement.rightWheelSpeed = 1;
 		
