@@ -42,10 +42,16 @@ void turnRightRadius(float radius);
 
 // analysePicture.cpp functions and structs
 
+struct pictureAnalysisRow {
+	int rowNumber;
+	float total_error;
+	float last_error;
+	float signal;
+	bool isRowEmpty;
+}
+
 struct pictureAnalysisData {
-    float total_error;
-    float last_error;
-	
+    std::vector<pictureAnalysisRow> rows;
 	float kp;
 	float ki;
 	float kd;
@@ -59,6 +65,6 @@ struct movementInfo {
 
 void setMotors(movementInfo& info);
 
-float analysePicture(pictureAnalysisData& data);
+void analysePicture(pictureAnalysisData& data);
 
 #endif // LIB_E_101_H_

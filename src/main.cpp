@@ -30,6 +30,11 @@ int main(int argc, char* argv[]) {
 	data.ki = 0.0f;
 	data.kd = 0.0f;
 	
+	data.rows.resize(3);
+	data.rows[0].rowNumber = 60;
+	data.rows[1].rowNumber = 120;
+	data.rows[2].rowNumber = 180;
+	
 	// movement test
 	if (argc == 2 && strcmp(argv[1], "m") == 0) {
 		// movement test
@@ -80,13 +85,14 @@ int main(int argc, char* argv[]) {
 	float turnResponse = 0.01;
 	
 	while (true) {
-		float signal = analysePicture(data);
+		analysePicture(data);
 		
 		movementInfo movement;
 		movement.maxSpeed = maxSpeed;
 		movement.leftWheelSpeed = 1;
 		movement.rightWheelSpeed = 1;
 		
+		float signal = data.rows[1].signal;
 		
 		if (signal < 0) {
 			movement.rightWheelSpeed += -signal * turnResponse;
