@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
 		
 		float signal = data.rows[1].signal;
 		
-		if (!data.rows[1].isRowEmpty) {
+		if (data.rows[1].pixelCont > 20) {
 			if (signal < 0) {
 				movement.rightWheelSpeed += -signal * turnResponse;
 			} else {

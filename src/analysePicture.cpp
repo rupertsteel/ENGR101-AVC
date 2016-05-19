@@ -5,6 +5,7 @@ void analysePicture(pictureAnalysisData& data) {
 	
 	for (int i = 0; i < data.rows.size(); i++) {
 		data.rows[i].isRowEmpty = true;
+		data.rows[i].pixelCount = 0;
 		
 		//Proportional (P)
 		float sum = 0;
@@ -13,6 +14,7 @@ void analysePicture(pictureAnalysisData& data) {
 			if(whiteness > 127){
 				sum += (j - 160);
 				data.rows[i].isRowEmpty = false;
+				data.rows[i].pixelCount++;
 			}
 		}
 		

@@ -51,6 +51,7 @@ struct pictureAnalysisRow {
 	float last_error;
 	float signal;
 	bool isRowEmpty;
+	int pixelCount;
 };
 
 struct pictureAnalysisData {
