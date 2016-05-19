@@ -100,17 +100,19 @@ int main(int argc, char* argv[]) {
 		
 		float signal = data.rows[1].signal;
 		
-		if (data.rows[1].pixelCount > 20) {
+		// we start reversing when we see less than 10 pixels, we stop reversing when we see 20 or more pixels.
+		if ((!wasReversingLastTurn && data.rows[1].pixelCount <= 10)
+			|| (wasReversingLastTurn && data.rows[1].pixelCount <= 20)) {
+			wasReversingLastTurn = true;
+			movement.leftWheelSpeed = -1;
+			movement.rightWheelSpeed = -1;
+		} else {
+			wasReversingLastTurn = false;
 			if (signal < 0) {
 				movement.rightWheelSpeed += -signal * turnResponse;
 			} else {
 				movement.leftWheelSpeed += signal * turnResponse;
 			}
-			wasReversingLastTurn = false;
-		} else {
-			wasReversingLastTurn = true;
-			movement.leftWheelSpeed = -1;
-			movement.rightWheelSpeed = -1;
 		}
 		
 		setMotors(movement);
