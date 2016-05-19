@@ -8,10 +8,10 @@ void analysePicture(pictureAnalysisData& data) {
 		
 		//Proportional (P)
 		float sum = 0;
-		for(int i = 0; i<320; i++){
-			int whiteness = get_pixel(i, data.rows[i].rowNumber, 3);
+		for(int j = 0; j<320; j++){
+			int whiteness = get_pixel(j, data.rows[i].rowNumber, 3);
 			if(whiteness > 127){
-				sum += (i - 160);
+				sum += (j - 160);
 				data.rows[i].isRowEmpty = false;
 			}
 		}
@@ -35,6 +35,4 @@ void analysePicture(pictureAnalysisData& data) {
 	
 	//printf("Error: %f, integral: %f, derivative: %f, signal: %f\n",
 	//	error, integral_signal, derivative_signal, totalSignal);
-	
-	return totalSignal;
 }
