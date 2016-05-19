@@ -81,8 +81,16 @@ int main(int argc, char* argv[]) {
 	//moveForward();
 	
 	float turnResponse = 0.01;
+	bool wasReversingLastTurn = false;
 	
 	while (true) {
+		if (wasReversingLastTurn) {
+			for (int i = 0; i < data.rows.size(); i++) {
+				data.rows[i].total_error = 0;
+				data.rows[i].last_error = 0;
+			}
+		}
+		
 		analysePicture(data);
 		
 		movementInfo movement;
@@ -98,7 +106,9 @@ int main(int argc, char* argv[]) {
 			} else {
 				movement.leftWheelSpeed += signal * turnResponse;
 			}
+			wasReversingLastTurn = false;
 		} else {
+			wasReversingLastTurn = true;
 			movement.leftWheelSpeed = -1;
 			movement.rightWheelSpeed = -1;
 		}
