@@ -13,6 +13,7 @@ extern "C" int receive_from_server(char message[24]);
 extern "C" int Sleep( int sec , int usec );
 extern "C" int set_motor(int motor , int speed );
 extern "C" int display_picture(int delay_sec,int delay_usec);
+extern "C" int read_analog(int ch_adc);
 
 extern "C" int take_picture();
 extern "C" char get_pixel(int row, int col, int color);
