@@ -94,11 +94,16 @@ int main(int argc, char* argv[]) {
 		
 		float signal = data.rows[1].signal;
 		
-		if (signal < 0) {
-			movement.rightWheelSpeed += -signal * turnResponse;
+		if (!data.rows[1].isRowEmpty) {
+			if (signal < 0) {
+				movement.rightWheelSpeed += -signal * turnResponse;
+			} else {
+				movement.leftWheelSpeed += signal * turnResponse;
+			}
 		} else {
-			movement.leftWheelSpeed += signal * turnResponse;
-		}		
+			movement.leftWheelSpeed = -1;
+			movement.rightWheelSpeed = -1;
+		}
 		
 		setMotors(movement);
 		
