@@ -5,7 +5,7 @@ void analysePicture(pictureAnalysisData& data) {
 	
 	auto now = std::chrono::system_clock::now();
 	
-	auto dur = data.lastPictureTime - now;
+	auto dur = now - data.lastPictureTime;
 	float dt = std::chrono::duration_cast<std::chrono::duration<float>>(dur).count();
 	
 	data.lastPictureTime = now;
