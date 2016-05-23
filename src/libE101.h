@@ -6,6 +6,7 @@
 #include <time.h>
 
 #include <vector>
+#include <chrono>
 
 // libe101 functions
 extern "C" int init(int d_lev);
@@ -60,6 +61,7 @@ struct pictureAnalysisData {
 	float kp;
 	float ki;
 	float kd;
+	std::chrono::system_clock::time_point lastPictureTime;
 };
 
 struct movementInfo {

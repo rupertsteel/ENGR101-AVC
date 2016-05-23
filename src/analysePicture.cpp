@@ -3,6 +3,15 @@
 void analysePicture(pictureAnalysisData& data) {
     take_picture();
 	
+	auto now = std::chrono::system_clock::now();
+	
+	auto dur = data.lastPictureTime - now;
+	float dt = std::chrono::duration_cast<std::chrono::duration<float>>(dur).count();
+	
+	data.lastPictureTime = now;
+	
+	printf("Dt: %f\n", dt);
+	
 	for (int i = 0; i < data.rows.size(); i++) {
 		// for decting the end of the line maze, if the number of red pixels is much larger than the number
 		// of blue pixels, then we are at the line maze end.
@@ -43,12 +52,11 @@ void analysePicture(pictureAnalysisData& data) {
 
 		//Integral(I)
 		data.rows[i].total_error += error;
-		float integral_signal = data.rows[i].total_error*data.ki;
+		float integral_signal = data.rows[i].total_error*data.ki * dt;
 		
 		//Deriviate (D)
-		float error_period = 1.0f/90.0f;
 		float error_diff = error - data.rows[i].last_error;
-		float derivative_signal = (error_diff/error_period)*data.kd;
+		float derivative_signal = (error_diff/dt)*data.kd;
 		data.rows[i].last_error = error;
 		
 		data.rows[i].signal = integral_signal + derivative_signal + proportional_signal;

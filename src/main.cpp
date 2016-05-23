@@ -127,8 +127,6 @@ int main(int argc, char* argv[]) {
 		}
 		
 		setMotors(movement);
-		
-		Sleep(0, 11111);
 	}
 	
 	
