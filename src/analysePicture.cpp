@@ -26,7 +26,7 @@ void analysePicture(pictureAnalysisData& data) {
 			if (red > 127) {
 				redCount++;
 			}
-			int blue = get_pixel(j, data.rows[i].rowNumber, 0);
+			int blue = get_pixel(j, data.rows[i].rowNumber, 1);
 			if (blue > 127) {
 				blueCount++;
 			}
