@@ -10,8 +10,6 @@ void analysePicture(pictureAnalysisData& data) {
 	
 	data.lastPictureTime = now;
 	
-	printf("Dt: %f\n", dt);
-	
 	for (int i = 0; i < data.rows.size(); i++) {
 		// for decting the end of the line maze, if the number of red pixels is much larger than the number
 		// of blue pixels, then we are at the line maze end.
