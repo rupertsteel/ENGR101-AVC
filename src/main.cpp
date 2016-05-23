@@ -33,6 +33,8 @@ int main(int argc, char* argv[]) {
 	data.rows[1].rowNumber = 120;
 	data.rows[2].rowNumber = 180;
 	
+	bool shouldOpenGate = false;
+	
 	// movement test
 	if (argc == 2 && strcmp(argv[1], "m") == 0) {
 		// movement test
@@ -56,29 +58,37 @@ int main(int argc, char* argv[]) {
 		
 		set_motor(2, 0);
 		return 0;
-	} else if (argc == 2 && strcmp(argv[1], "g") == 0) {
-		openGate();
 	} else if (argc == 2 && strcmp(argv[1], "c") == 0) {
 		take_picture();
 		display_picture(10, 0);
 	} else {
+		int argvBase = 1;
+		if (argc >= 2 && strcmp(argv[1], "g") == 0) {
+			argvBase = 2;
+			shouldOpenGate = true;
+		}
+		
 		// provide custom values for the pid
-		if (argc >= 2) {
-			maxSpeed = std::strtod(argv[1], NULL);
+		if (argc >= argvBase + 1) {
+			maxSpeed = std::strtod(argv[argvBase], NULL);
 		}
-		if (argc >= 3) {
-			data.kp = std::strtod(argv[2], NULL);
+		if (argc >= argvBase + 2) {
+			data.kp = std::strtod(argv[argvBase + 1], NULL);
 		}
-		if (argc >= 4) {
-			data.ki = std::strtod(argv[3], NULL);
+		if (argc >= argvBase + 3) {
+			data.ki = std::strtod(argv[argvBase + 2], NULL);
 		}
-		if (argc >= 5) {
-			data.kd = std::strtod(argv[4], NULL);
+		if (argc >= argvBase + 4) {
+			data.kd = std::strtod(argv[argvBase + 3], NULL);
 		}
 	}
 	
 	//openGate(); // the gate server isn't up yet, so this will block
 	//moveForward();
+	
+	if (shouldOpenGate) {
+		openGate();
+	}
 	
 	float turnResponse = 0.01;
 	bool wasReversingLastTurn = false;
