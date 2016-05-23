@@ -83,7 +83,8 @@ int main(int argc, char* argv[]) {
 	float turnResponse = 0.01;
 	bool wasReversingLastTurn = false;
 	
-	while (true) {
+	// line maze code
+	while (!data.rows[1].isLineMazeEnd) {
 		if (wasReversingLastTurn) {
 			for (int i = 0; i < data.rows.size(); i++) {
 				data.rows[i].total_error = 0;
@@ -119,6 +120,9 @@ int main(int argc, char* argv[]) {
 		
 		Sleep(0, 11111);
 	}
+	
+	
+	// walled maze code
 	
 	return 0;
 }

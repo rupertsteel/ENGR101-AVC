@@ -4,18 +4,37 @@ void analysePicture(pictureAnalysisData& data) {
     take_picture();
 	
 	for (int i = 0; i < data.rows.size(); i++) {
+		// for decting the end of the line maze, if the number of red pixels is much larger than the number
+		// of blue pixels, then we are at the line maze end.
+		int redCount = 0;
+		int blueCount = 0;
+		
 		data.rows[i].isRowEmpty = true;
 		data.rows[i].pixelCount = 0;
 		
 		//Proportional (P)
 		float sum = 0;
 		for(int j = 0; j<320; j++){
+			int red = get_pixel(j, data.rows[i].rowNumber, 0);
+			if (red > 127) {
+				redCount++;
+			}
+			int blue = get_pixel(j, data.rows[i].rowNumber, 0);
+			if (blue > 127) {
+				blueCount++;
+			}
+			
 			int whiteness = get_pixel(j, data.rows[i].rowNumber, 3);
 			if(whiteness > 127){
 				sum += (j - 160);
 				data.rows[i].isRowEmpty = false;
 				data.rows[i].pixelCount++;
 			}
+		}
+		
+		if (redCount > blueCount + 20) {
+			// we are on the end
+			data.rows[i].isLineMazeEnd = true;
 		}
 		
 		float error = sum / 1000.0f;

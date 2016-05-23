@@ -52,6 +52,7 @@ struct pictureAnalysisRow {
 	float signal;
 	bool isRowEmpty;
 	int pixelCount;
+	bool isLineMazeEnd;
 };
 
 struct pictureAnalysisData {
