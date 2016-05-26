@@ -146,7 +146,7 @@ int main(int argc, char* argv[]) {
 				lastMovementDistances.erase(lastMovementDistances.begin());
 			}
 			
-			if (lastMovementDistances.size() > 15 &&
+			if (lastMovementDistances.size() == 15 &&
 			  std::all_of(lastMovementDistances.begin(), lastMovementDistances.end(), [](float f){ return f < 0.09f; })) {
 				// we will turn around
 				lastMovementDistances.clear();
