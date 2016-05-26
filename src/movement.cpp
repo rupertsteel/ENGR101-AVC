@@ -51,8 +51,8 @@ void turnLeftRadius(float radius) {
 void setMotors(movementInfo& movement) {
 	float driveMax = std::max(abs(movement.leftWheelSpeed), abs(movement.rightWheelSpeed));
 	
-	movement.leftWheelSpeed /= driveMax * movement.maxSpeed;
-	movement.rightWheelSpeed /= driveMax * movement.maxSpeed;
+	movement.leftWheelSpeed = movement.leftWheelSpeed / driveMax * movement.maxSpeed;
+	movement.rightWheelSpeed = movement.rightWheelSpeed / driveMax * movement.maxSpeed;
 	
 	// and convert to int's for the set_motor function
 	int leftWheelDriveInt = static_cast<int>(movement.leftWheelSpeed * 255);
