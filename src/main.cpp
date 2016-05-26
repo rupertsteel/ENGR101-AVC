@@ -4,6 +4,7 @@
 #include <csignal>
 #include <cstring>
 #include <cstdlib>
+#include <algorithm>
 
 void handle_signal(int signal) {
 	if (signal == SIGINT) {
@@ -68,7 +69,7 @@ int main(int argc, char* argv[]) {
 			time = std::strtol(argv[2], NULL);
 		}
 		
-		rotate180();
+		turn180(time);
 		
 		return 0;
 	} else {
@@ -159,7 +160,7 @@ int main(int argc, char* argv[]) {
 				lastMovementDistances.clear();
 				reversing = false;
 				
-				turn180();
+				turn180(100);
 				
 				continue;
 			}
