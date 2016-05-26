@@ -23,16 +23,16 @@ void analysePicture(pictureAnalysisData& data) {
 		float sum = 0;
 		for(int j = 0; j<320; j++){
 			int red = get_pixel(j, data.rows[i].rowNumber, 0);
-			if (red > 127) {
+			if (red > 150) {
 				redCount++;
 			}
 			int blue = get_pixel(j, data.rows[i].rowNumber, 1);
-			if (blue > 127) {
+			if (blue > 150) {
 				blueCount++;
 			}
 			
 			int whiteness = get_pixel(j, data.rows[i].rowNumber, 3);
-			if(whiteness > 127){
+			if(whiteness > 150){
 				sum += (j - 160);
 				data.rows[i].isRowEmpty = false;
 				data.rows[i].pixelCount++;
