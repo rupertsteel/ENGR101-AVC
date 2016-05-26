@@ -96,8 +96,6 @@ int main(int argc, char* argv[]) {
 	float leftWheelTotalMovement = 0;
 	float rightWheelTotalMovement = 0;
 	
-	std::vector<float> lastSignalsBeforeReversing
-	
 	// line maze code
 	while (!data.rows[1].isLineMazeEnd) {
 		if (wasReversingLastTurn) {
