@@ -73,6 +73,8 @@ struct movementInfo {
 
 void setMotors(movementInfo& info);
 
+void turn180(int sleepTime);
+
 void analysePicture(pictureAnalysisData& data);
 
 #endif // LIB_E_101_H_

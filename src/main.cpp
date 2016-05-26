@@ -61,6 +61,16 @@ int main(int argc, char* argv[]) {
 	} else if (argc == 2 && strcmp(argv[1], "c") == 0) {
 		take_picture();
 		display_picture(10, 0);
+	} else if (argc >= 2 && strcmp(argv[1], "r") == 0) {
+		// rotate 180 test
+		int time = 100;
+		if (argc == 3) {
+			time = std::strtol(argv[2], NULL);
+		}
+		
+		rotate180();
+		
+		return 0;
 	} else {
 		int argvBase = 1;
 		if (argc >= 2 && strcmp(argv[1], "g") == 0) {
