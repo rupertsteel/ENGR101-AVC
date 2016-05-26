@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
 		// rotate 180 test
 		int time = 100;
 		if (argc == 3) {
-			time = std::strtol(argv[2], NULL);
+			time = std::strtol(argv[2], NULL, 0);
 		}
 		
 		turn180(time);
