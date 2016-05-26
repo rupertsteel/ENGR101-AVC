@@ -72,6 +72,8 @@ void turnToLine() {
 	set_motor(1, 51);
 	set_motor(2, -51);
 	
+	std::this_thread::sleep_for(std::chrono::milliseconds(300));
+	
 	pictureAnalysisData data;
 	data.rows.resize(1);
 	data.rows[0].rowNumber = 120;
