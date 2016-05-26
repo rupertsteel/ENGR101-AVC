@@ -82,7 +82,7 @@ void turn180(float sleepTime) {
 	
 	do {
 		analysePicture(data);
-	} while (data.rows[0].isRowEmpty || abs(data.rows[0].signal) > 1);
+	} while (data.rows[0].isRowEmpty || abs(data.rows[0].signal) < 1);
 	
 	set_motor(1, 0);
 	set_motor(2, 0);
