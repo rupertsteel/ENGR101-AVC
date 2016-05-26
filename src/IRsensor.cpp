@@ -1,5 +1,6 @@
 #include "libE101.h"
 
+/*
 float IRsensor() {
  //read IR sensors
  front = ReadAnalog (0);
@@ -12,3 +13,4 @@ float signal =0;
  }
  if(left>right){
 }if
+*/
