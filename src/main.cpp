@@ -122,7 +122,9 @@ int main(int argc, char* argv[]) {
 			|| (wasReversingLastTurn && data.rows[1].pixelCount <= 20)) {
 			// check if we need to turn around.	
 			
-			printf("L: %f, R: %f\n", leftWheelTotalMovement, rightWheelTotalMovement);
+			if (leftWheelTotalMovement > 0) {
+				printf("L: %f, R: %f\n", leftWheelTotalMovement, rightWheelTotalMovement);
+			}
 			
 			wasReversingLastTurn = true;
 			movement.leftWheelSpeed = -1;
