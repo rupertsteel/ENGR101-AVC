@@ -62,6 +62,7 @@ struct pictureAnalysisData {
 	float ki;
 	float kd;
 	std::chrono::system_clock::time_point lastPictureTime;
+	float dt;
 };
 
 struct movementInfo {

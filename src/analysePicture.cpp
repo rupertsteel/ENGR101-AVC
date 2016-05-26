@@ -6,7 +6,7 @@ void analysePicture(pictureAnalysisData& data) {
 	auto now = std::chrono::system_clock::now();
 	
 	auto dur = now - data.lastPictureTime;
-	float dt = std::chrono::duration_cast<std::chrono::duration<float>>(dur).count();
+	data.dt = std::chrono::duration_cast<std::chrono::duration<float>>(dur).count();
 	
 	data.lastPictureTime = now;
 	
@@ -50,11 +50,11 @@ void analysePicture(pictureAnalysisData& data) {
 
 		//Integral(I)
 		data.rows[i].total_error += error;
-		float integral_signal = data.rows[i].total_error*data.ki * dt;
+		float integral_signal = data.rows[i].total_error*data.ki * data.dt;
 		
 		//Deriviate (D)
 		float error_diff = error - data.rows[i].last_error;
-		float derivative_signal = (error_diff/dt)*data.kd;
+		float derivative_signal = (error_diff/data.dt)*data.kd;
 		data.rows[i].last_error = error;
 		
 		data.rows[i].signal = integral_signal + derivative_signal + proportional_signal;
