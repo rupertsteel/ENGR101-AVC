@@ -93,9 +93,17 @@ int main(int argc, char* argv[]) {
 	float turnResponse = 0.01;
 	bool wasReversingLastTurn = false;
 	
+	float leftWheelTotalMovement = 0;
+	float rightWheelTotalMovement = 0;
+	
+	std::vector<float> lastSignalsBeforeReversing
+	
 	// line maze code
 	while (!data.rows[1].isLineMazeEnd) {
 		if (wasReversingLastTurn) {
+			leftWheelTotalMovement = 0;
+			rightWheelTotalMovement = 0;
+			
 			for (int i = 0; i < data.rows.size(); i++) {
 				data.rows[i].total_error = 0;
 				data.rows[i].last_error = 0;
@@ -114,6 +122,10 @@ int main(int argc, char* argv[]) {
 		// we start reversing when we see less than 10 pixels, we stop reversing when we see 20 or more pixels.
 		if ((!wasReversingLastTurn && data.rows[1].pixelCount <= 10)
 			|| (wasReversingLastTurn && data.rows[1].pixelCount <= 20)) {
+			// check if we need to turn around.	
+			
+			printf("L: %f, R: %f\n", leftWheelTotalMovement, rightWheelTotalMovement);
+			
 			wasReversingLastTurn = true;
 			movement.leftWheelSpeed = -1;
 			movement.rightWheelSpeed = -1;
@@ -127,6 +139,9 @@ int main(int argc, char* argv[]) {
 		}
 		
 		setMotors(movement);
+		
+		leftWheelTotalMovement += movement.leftWheelSpeed * data.dt;
+		rightWheelTotalMovement += movement.rightWheelSpeed * data.dt;
 	}
 	
 	
