@@ -101,14 +101,17 @@ int main(int argc, char* argv[]) {
 	}
 	
 	float turnResponse = 0.01;
-	bool wasReversingLastTurn = false;
 	
 	float leftWheelTotalMovement = 0;
 	float rightWheelTotalMovement = 0;
 	
+	bool reversing = false;
+	
+	std::vector<float> lastMovementDistances;
+	
 	// line maze code
 	while (!data.rows[1].isLineMazeEnd) {
-		if (wasReversingLastTurn) {
+		if (reversing) {
 			leftWheelTotalMovement = 0;
 			rightWheelTotalMovement = 0;
 			
@@ -127,20 +130,49 @@ int main(int argc, char* argv[]) {
 		
 		float signal = data.rows[1].signal;
 		
-		// we start reversing when we see less than 10 pixels, we stop reversing when we see 20 or more pixels.
-		if ((!wasReversingLastTurn && data.rows[1].pixelCount <= 10)
-			|| (wasReversingLastTurn && data.rows[1].pixelCount <= 20)) {
-			// check if we need to turn around.	
+		bool shouldStartReversing = data.rows[1].pixelCount <= 10;
+		bool shouldStopReversing = data.rows[1].pixelCount > 20;
+		
+		if (shouldStartReversing && !reversing) {
+			// code for starting reversing
+			reversing = true;
+			
+			lastMovementDistances.push_back((leftWheelTotalMovement + rightWheelTotalMovement) / 2.0f);
+			if (lastMovementDistances.size() > 15) {
+				lastMovementDistances.erase(lastMovementDistances.begin());
+			}
+			
+			bool shouldTurnAround = true;
+			for (auto movementDistance : lastMovementDistances) {
+				if (movementDistance > 0.09f) {
+					shouldTurnAround = false;
+				}
+			}
 			
 			if (leftWheelTotalMovement > 0) {
 				printf("L: %f, R: %f\n", leftWheelTotalMovement, rightWheelTotalMovement);
 			}
 			
-			wasReversingLastTurn = true;
+			if (lastMovementDistances.size() > 15 &&
+				std::all_of(lastMovementDistances.begin(), lastMovementDistances.end(), [](float f){ return f < 0.09f; })) {
+				// we will turn around
+				lastMovementDistances.clear();
+				reversing = false;
+				
+				turn180();
+				
+				continue;
+			}
+		}
+		if (shouldStopReversing && reversing) {
+			// code for when we are stopping reversing
+			reversing = false;
+		}
+		
+		if (reversing) {
 			movement.leftWheelSpeed = -1;
 			movement.rightWheelSpeed = -1;
 		} else {
-			wasReversingLastTurn = false;
 			if (signal < 0) {
 				movement.rightWheelSpeed += -signal * turnResponse;
 			} else {
