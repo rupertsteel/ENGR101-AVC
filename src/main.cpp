@@ -94,9 +94,6 @@ int main(int argc, char* argv[]) {
 		}
 	}
 	
-	//openGate(); // the gate server isn't up yet, so this will block
-	//moveForward();
-	
 	if (shouldOpenGate) {
 		openGate();
 	}
@@ -138,24 +135,19 @@ int main(int argc, char* argv[]) {
 			// code for starting reversing
 			reversing = true;
 			
-			lastMovementDistances.push_back((leftWheelTotalMovement + rightWheelTotalMovement) / 2.0f);
-			if (lastMovementDistances.size() > 15) {
-				lastMovementDistances.erase(lastMovementDistances.begin());
-			}
-			
-			bool shouldTurnAround = true;
-			for (auto movementDistance : lastMovementDistances) {
-				if (movementDistance > 0.09f) {
-					shouldTurnAround = false;
-				}
-			}
-			
 			if (leftWheelTotalMovement > 0) {
 				printf("L: %f, R: %f\n", leftWheelTotalMovement, rightWheelTotalMovement);
 			}
 			
+			lastMovementDistances.push_back((leftWheelTotalMovement + rightWheelTotalMovement) / 2.0f);
+			leftWheelTotalMovement = 0;
+			rightWheelTotalMovement = 0;
+			if (lastMovementDistances.size() > 15) {
+				lastMovementDistances.erase(lastMovementDistances.begin());
+			}
+			
 			if (lastMovementDistances.size() > 15 &&
-				std::all_of(lastMovementDistances.begin(), lastMovementDistances.end(), [](float f){ return f < 0.09f; })) {
+			  std::all_of(lastMovementDistances.begin(), lastMovementDistances.end(), [](float f){ return f < 0.09f; })) {
 				// we will turn around
 				lastMovementDistances.clear();
 				reversing = false;
@@ -168,6 +160,8 @@ int main(int argc, char* argv[]) {
 		if (shouldStopReversing && reversing) {
 			// code for when we are stopping reversing
 			reversing = false;
+			leftWheelTotalMovement = 0;
+			rightWheelTotalMovement = 0;
 		}
 		
 		if (reversing) {
