@@ -58,6 +58,10 @@ void setMotors(movementInfo& movement) {
 	int leftWheelDriveInt = static_cast<int>(movement.leftWheelSpeed * 255);
 	int rightWheelDriveInt = static_cast<int>(movement.rightWheelSpeed * 255);
 	
+	if (leftWheelDriveInt > 255 || leftWheelDriveInt < -255) {
+		printf("Out of range: I: %d, F: %f\n", leftWheelDriveInt, movement.leftWheelSpeed);
+	}
+	
 	set_motor(1, leftWheelDriveInt);
 	set_motor(2, rightWheelDriveInt);
 }
