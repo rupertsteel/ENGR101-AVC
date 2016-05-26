@@ -69,8 +69,8 @@ void setMotors(movementInfo& movement) {
 }
 
 void turn180(float sleepTime) {
-	set_motor(1, 100);
-	set_motor(2, -100);
+	set_motor(1, 51);
+	set_motor(2, -51);
 	
 	std::chrono::duration<double> dur(sleepTime);
 	std::this_thread::sleep_for(dur);
