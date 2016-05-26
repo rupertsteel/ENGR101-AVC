@@ -2,6 +2,8 @@
 #include "libE101.h"
 
 #include <algorithm>
+#include <chrono>
+#include <thread>
 
 void moveForward() {
 	set_motor(1, 63);
@@ -66,11 +68,12 @@ void setMotors(movementInfo& movement) {
 	set_motor(2, rightWheelDriveInt);
 }
 
-void turn180(int sleepTime) {
+void turn180(float sleepTime) {
 	set_motor(1, 51);
 	set_motor(2, -51);
 	
-	Sleep(0, sleepTime);
+	std::chrono::duration<double> dur(sleepTime);
+	std::this_thread::sleep_for(dur);
 	
 	set_motor(1, 0);
 	set_motor(2, 0);

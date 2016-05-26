@@ -64,9 +64,9 @@ int main(int argc, char* argv[]) {
 		display_picture(10, 0);
 	} else if (argc >= 2 && strcmp(argv[1], "r") == 0) {
 		// rotate 180 test
-		int time = 100;
+		float time = 1;
 		if (argc == 3) {
-			time = std::strtol(argv[2], NULL, 0);
+			time = std::strtod(argv[2], NULL, );
 		}
 		
 		turn180(time);
@@ -160,7 +160,7 @@ int main(int argc, char* argv[]) {
 				lastMovementDistances.clear();
 				reversing = false;
 				
-				turn180(100);
+				turn180(1);
 				
 				continue;
 			}
