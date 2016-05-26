@@ -73,7 +73,7 @@ struct movementInfo {
 
 void setMotors(movementInfo& info);
 
-void turn180(float sleepTime);
+void turnToLine();
 
 void analysePicture(pictureAnalysisData& data);
 

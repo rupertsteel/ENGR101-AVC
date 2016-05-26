@@ -68,7 +68,7 @@ void setMotors(movementInfo& movement) {
 	set_motor(2, rightWheelDriveInt);
 }
 
-void turn180(float sleepTime) {
+void turnToLine() {
 	set_motor(1, 51);
 	set_motor(2, -51);
 	
