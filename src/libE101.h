@@ -54,6 +54,8 @@ struct pictureAnalysisRow {
 	bool isRowEmpty;
 	int pixelCount;
 	bool isLineMazeEnd;
+	int leftMostPixel;
+	int rightMostPixel;
 };
 
 struct pictureAnalysisData {
@@ -63,6 +65,10 @@ struct pictureAnalysisData {
 	float kd;
 	std::chrono::system_clock::time_point lastPictureTime;
 	float dt;
+	
+	bool isThereLineToLeft;
+	bool isThereLineToRight;
+	bool isThereLineToFront;
 };
 
 struct movementInfo {

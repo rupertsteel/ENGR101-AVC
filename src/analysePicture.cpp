@@ -18,6 +18,8 @@ void analysePicture(pictureAnalysisData& data) {
 		
 		data.rows[i].isRowEmpty = true;
 		data.rows[i].pixelCount = 0;
+		data.rows[i].leftMostPixel = 320;
+		data.rows[i].rightMostPixel = 0;
 		
 		//Proportional (P)
 		float sum = 0;
@@ -36,6 +38,11 @@ void analysePicture(pictureAnalysisData& data) {
 				sum += (j - 160);
 				data.rows[i].isRowEmpty = false;
 				data.rows[i].pixelCount++;
+				
+				if (data.rows[i].leftMostPixel == 320) {
+					data.rows[i].leftMostPixel = j;
+				}
+				data.rows[i].rightMostPixel = j;
 			}
 		}
 		
@@ -59,6 +66,10 @@ void analysePicture(pictureAnalysisData& data) {
 		
 		data.rows[i].signal = integral_signal + derivative_signal + proportional_signal;
 	}
+	
+	data.isThereLineToFront = (data.rows[0].rightMostPixel - data.rows[0].leftMostPixel) > 20;
+	data.isThereLineToLeft = ((data.rows[0].leftMostPixel + data.rows[2].leftMostPixel) / 2) > (data.rows[1].leftMostPixel + 40);
+	data.isThereLineToRight = ((data.rows[0].rightMostPixel + data.rows[2].rightMostPixel) / 2) < (data.rows[1].rightMostPixel - 40);
 	
 	//printf("Error: %f, integral: %f, derivative: %f, signal: %f\n",
 	//	error, integral_signal, derivative_signal, totalSignal);
