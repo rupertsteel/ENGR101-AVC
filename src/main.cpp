@@ -121,6 +121,10 @@ int main(int argc, char* argv[]) {
 		
 		analysePicture(data);
 		
+		if (data.isThereLineToLeft || data.isThereLineToRight) {
+			printf("L: %d, R: %d\n", data.isThereLineToLeft, data.isThereLineToRight);
+		}
+		
 		movementInfo movement;
 		movement.maxSpeed = maxSpeed;
 		movement.leftWheelSpeed = 1;
@@ -135,9 +139,9 @@ int main(int argc, char* argv[]) {
 			// code for starting reversing
 			reversing = true;
 			
-			if (leftWheelTotalMovement > 0) {
+			/*if (leftWheelTotalMovement > 0) {
 				printf("L: %f, R: %f\n", leftWheelTotalMovement, rightWheelTotalMovement);
-			}
+			}*/
 			
 			lastMovementDistances.push_back((leftWheelTotalMovement + rightWheelTotalMovement) / 2.0f);
 			leftWheelTotalMovement = 0;
