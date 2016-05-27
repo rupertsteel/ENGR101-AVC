@@ -69,7 +69,7 @@ int main(int argc, char* argv[]) {
 			time = std::strtod(argv[2], NULL);
 		}
 		
-		turnToLine();
+		turnToLineClockwise();
 		
 		return 0;
 	} else {
@@ -152,7 +152,7 @@ int main(int argc, char* argv[]) {
 				lastMovementDistances.clear();
 				reversing = false;
 				
-				turnToLine();
+				turnToLineClockwise();
 				
 				continue;
 			}

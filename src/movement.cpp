@@ -68,9 +68,31 @@ void setMotors(movementInfo& movement) {
 	set_motor(2, rightWheelDriveInt);
 }
 
-void turnToLine() {
+void turnToLineClockwise() {
 	set_motor(1, 51);
 	set_motor(2, -51);
+	
+	std::this_thread::sleep_for(std::chrono::milliseconds(300));
+	
+	pictureAnalysisData data;
+	data.rows.resize(1);
+	data.rows[0].rowNumber = 120;
+	
+	data.kp = 0.1;
+	data.ki = 0;
+	data.kd = 0;
+	
+	do {
+		analysePicture(data);
+	} while (data.rows[0].isRowEmpty || abs(data.rows[0].signal) < 1);
+	
+	set_motor(1, 0);
+	set_motor(2, 0);
+}
+
+void turnToLineAntiClockwise() {
+	set_motor(1, -51);
+	set_motor(2, 51);
 	
 	std::this_thread::sleep_for(std::chrono::milliseconds(300));
 	

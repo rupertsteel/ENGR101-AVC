@@ -73,7 +73,8 @@ struct movementInfo {
 
 void setMotors(movementInfo& info);
 
-void turnToLine();
+void turnToLineClockwise();
+void turnToLineAntiClockwise();
 
 void analysePicture(pictureAnalysisData& data);
 
