@@ -142,11 +142,11 @@ int main(int argc, char* argv[]) {
 			lastMovementDistances.push_back((leftWheelTotalMovement + rightWheelTotalMovement) / 2.0f);
 			leftWheelTotalMovement = 0;
 			rightWheelTotalMovement = 0;
-			if (lastMovementDistances.size() > 15) {
+			if (lastMovementDistances.size() > 7) {
 				lastMovementDistances.erase(lastMovementDistances.begin());
 			}
 			
-			if (lastMovementDistances.size() == 15 &&
+			if (lastMovementDistances.size() == 7 &&
 			  std::all_of(lastMovementDistances.begin(), lastMovementDistances.end(), [](float f){ return f < 0.09f; })) {
 				// we will turn around
 				lastMovementDistances.clear();
