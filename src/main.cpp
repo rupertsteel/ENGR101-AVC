@@ -121,8 +121,24 @@ int main(int argc, char* argv[]) {
 		
 		analysePicture(data);
 		
-		if (data.isThereLineToLeft || data.isThereLineToRight) {
-			printf("L: %d, R: %d\n", data.isThereLineToLeft, data.isThereLineToRight);
+		if (!data.isThereLineToFront) {
+			if (data.isThereLineToLeft && data.isThereLineToRight) {
+				// do a random chance
+				
+				if (rand() % 2 == 0) {
+					turnToLineClockwise();
+				} else {
+					turnToLineAntiClockwise();
+				}
+				
+				continue;
+			} else if (data.isThereLineToLeft) {
+				turnToLineAntiClockwise();
+				continue;
+			} else if (data.isThereLineToRight) {
+				turnToLineClockwise();
+				continue;
+			}
 		}
 		
 		movementInfo movement;
