@@ -256,6 +256,8 @@ int main(int argc, char* argv[]) {
 		}
 		
 		Sleep(0, 20000);
+		
+		setMotors(movement);
 	}
 	// walled maze code
 	
