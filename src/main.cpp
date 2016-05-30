@@ -250,9 +250,9 @@ int main(int argc, char* argv[]) {
 		analyseIrSensor(walledMazeData);
 		
 		if (walledMazeData.signal < 0) {
-			movement.rightWheelSpeed += -signal * 0.001f;
+			movement.rightWheelSpeed += -walledMazeData.signal * 0.001f;
 		} else {
-			movement.leftWheelSpeed += signal * 0.001f;
+			movement.leftWheelSpeed += walledMazeData.signal * 0.001f;
 		}
 		
 		std::this_thread::sleep_for(std::chrono::milliseconds(20));
