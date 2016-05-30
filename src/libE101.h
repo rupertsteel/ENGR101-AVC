@@ -78,11 +78,27 @@ struct movementInfo {
 	float rightWheelSpeed;
 };
 
+struct irData {
+	float kp;
+	float ki;
+	float kd;
+	
+	float dt;
+	
+	float total_error;
+	float last_error;
+	float signal;
+	
+	bool turnLeft;
+	bool turnRight;
+};
+
 void setMotors(movementInfo& info);
 
 void turnToLineClockwise();
 void turnToLineAntiClockwise();
 
 void analysePicture(pictureAnalysisData& data);
+void analyseIrSensor(irData& data);
 
 #endif // LIB_E_101_H_

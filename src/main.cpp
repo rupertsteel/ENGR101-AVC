@@ -29,18 +29,23 @@ int main(int argc, char* argv[]) {
 	// set a signal handler to stop the motors when we exit the program with ^C
 	std::signal(SIGINT, handle_signal);
 	
-	float maxSpeed = 0.5f;
+	float maxSpeed = 0.2f;
 	
 	pictureAnalysisData data;
+	irData walledMazeData;
 	
-	data.kp = 0.5f;
-	data.ki = 0.0f;
-	data.kd = 0.0f;
+	data.kp = 40.0f;
+	data.ki = 1.0f;
+	data.kd = 1.0f;
 	
 	data.rows.resize(3);
 	data.rows[0].rowNumber = 60;
 	data.rows[1].rowNumber = 120;
 	data.rows[2].rowNumber = 180;
+	
+	walledMazeData.kp = 1.0f;
+	walledMazeData.ki = 0.1f;
+	walledMazeData.kd = 0.1f;
 	
 	bool shouldOpenGate = false;
 	bool shouldSharpTurn = false;
@@ -107,6 +112,17 @@ int main(int argc, char* argv[]) {
 		}
 		if (argc >= argvBase + 4) {
 			data.kd = std::strtod(argv[argvBase + 3], NULL);
+		}
+		
+		// walled maze pid
+		if (argc >= argvBase + 5) {
+			walledMazeData.kp = std::strtod(argv[argvBase + 4], NULL);
+		}
+		if (argc >= argvBase + 6) {
+			walledMazeData.ki = std::strtod(argv[argvBase + 5], NULL);
+		}
+		if (argc >= argvBase + 7) {
+			walledMazeData.kd = std::strtod(argv[argvBase + 6], NULL);
 		}
 	}
 	
@@ -225,7 +241,22 @@ int main(int argc, char* argv[]) {
 		rightWheelTotalMovement += movement.rightWheelSpeed * data.dt;
 	}
 	
-	
+	while (true) {
+		movementInfo movement;
+		movement.maxSpeed = maxSpeed;
+		movement.leftWheelSpeed = 1;
+		movement.rightWheelSpeed = 1;
+		
+		analyseIrSensor(walledMazeData);
+		
+		if (walledMazeData.signal < 0) {
+			movement.rightWheelSpeed += -signal * 0.001f;
+		} else {
+			movement.leftWheelSpeed += signal * 0.001f;
+		}
+		
+		std::this_thread::sleep_for(std::chrono::milliseconds(20));
+	}
 	// walled maze code
 	
 	return 0;
