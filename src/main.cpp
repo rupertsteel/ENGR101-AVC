@@ -43,6 +43,7 @@ int main(int argc, char* argv[]) {
 	data.rows[2].rowNumber = 180;
 	
 	bool shouldOpenGate = false;
+	bool shouldSharpTurn = false;
 	
 	// movement test
 	if (argc == 2 && strcmp(argv[1], "m") == 0) {
@@ -82,9 +83,16 @@ int main(int argc, char* argv[]) {
 		return 0;
 	} else {
 		int argvBase = 1;
-		if (argc >= 2 && strcmp(argv[1], "g") == 0) {
+		if (argc >= 2 && islower(argv[1][0])) {
 			argvBase = 2;
-			shouldOpenGate = true;
+			
+			for (int i = 0; argv[1][i] != 0; i++) {
+				if (argv[1][i] == 'g') {
+					shouldOpenGate = true;
+				} else if (argv[1][i] == 't') {
+					shouldSharpTurn = true;
+				}
+			}
 		}
 		
 		// provide custom values for the pid
@@ -131,7 +139,7 @@ int main(int argc, char* argv[]) {
 		
 		analysePicture(data);
 		
-		if (!data.isThereLineToFront) {
+		if (!data.isThereLineToFront && shouldSharpTurn) {
 			if (data.isThereLineToLeft && data.isThereLineToRight) {
 				// do a random chance
 				
