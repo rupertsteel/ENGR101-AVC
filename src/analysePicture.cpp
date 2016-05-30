@@ -25,7 +25,7 @@ void analysePicture(pictureAnalysisData& data) {
 		float sum = 0;
 		for(int j = 0; j<320; j++){
 			int red = get_pixel(j, data.rows[i].rowNumber, 0);
-			if (red > 100) {
+			if (red > 127) {
 				redCount++;
 			}
 			int blue = get_pixel(j, data.rows[i].rowNumber, 1);
@@ -46,7 +46,7 @@ void analysePicture(pictureAnalysisData& data) {
 			}
 		}
 		
-		if (redCount > blueCount + 20) {
+		if (redCount > blueCount + 100) {
 			// we are on the end
 			data.rows[i].isLineMazeEnd = true;
 		}
