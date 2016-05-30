@@ -241,7 +241,7 @@ int main(int argc, char* argv[]) {
 		rightWheelTotalMovement += movement.rightWheelSpeed * data.dt;
 	}
 	
-	while (!walledMazeData.wallInfront) {
+	while (true) {
 		movementInfo movement;
 		movement.maxSpeed = maxSpeed;
 		movement.leftWheelSpeed = 1;
