@@ -15,7 +15,7 @@ void analyseIrSensor(irData& data) {
 		data.turnLeft = false;
 		data.turnRight = false;
 		
-		float iSignal = right - left;
+		float error = right - left;
 		
 		float proportional_signal = error*data.kp;
 
