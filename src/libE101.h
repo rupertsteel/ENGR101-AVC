@@ -20,6 +20,7 @@ extern "C" int read_analog(int ch_adc);
 
 extern "C" int take_picture();
 extern "C" char get_pixel(int row, int col, int color);
+extern "C" int save_picture(char filename[5]);
 
 // robot dimensions
 // all dimensions are in metres

@@ -15,6 +15,14 @@ void handle_signal(int signal) {
 	}
 }
 
+void savePictureWithNumber(int& pictureNumber) {
+	char buffer[6];
+	sprintf(buffer, "%05u", pictureNumber);
+	
+	save_picture(buffer);
+	pictureNumber++;
+}
+
 int main(int argc, char* argv[]) {
 	init(0);
 	
@@ -103,6 +111,8 @@ int main(int argc, char* argv[]) {
 	float leftWheelTotalMovement = 0;
 	float rightWheelTotalMovement = 0;
 	
+	int pictureCount = 0;
+	
 	bool reversing = false;
 	
 	std::vector<float> lastMovementDistances;
@@ -125,6 +135,8 @@ int main(int argc, char* argv[]) {
 			if (data.isThereLineToLeft && data.isThereLineToRight) {
 				// do a random chance
 				
+				savePictureWithNumber(pictureCount);
+				
 				if (rand() % 2 == 0) {
 					turnToLineClockwise();
 				} else {
@@ -133,9 +145,11 @@ int main(int argc, char* argv[]) {
 				
 				continue;
 			} else if (data.isThereLineToLeft) {
+				savePictureWithNumber(pictureCount);
 				turnToLineAntiClockwise();
 				continue;
 			} else if (data.isThereLineToRight) {
+				savePictureWithNumber(pictureCount);
 				turnToLineClockwise();
 				continue;
 			}
@@ -158,6 +172,8 @@ int main(int argc, char* argv[]) {
 			/*if (leftWheelTotalMovement > 0) {
 				printf("L: %f, R: %f\n", leftWheelTotalMovement, rightWheelTotalMovement);
 			}*/
+			
+			savePictureWithNumber(pictureCount);
 			
 			lastMovementDistances.push_back((leftWheelTotalMovement + rightWheelTotalMovement) / 2.0f);
 			leftWheelTotalMovement = 0;
