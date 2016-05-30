@@ -71,13 +71,13 @@ int main(int argc, char* argv[]) {
 	} else if (argc == 2 && strcmp(argv[1], "c") == 0) {
 		take_picture();
 		display_picture(10, 0);
-	} else if (argc >= 2 && strcmp(argv[1], "r") == 0) {
-		// rotate 180 test
-		float time = 1;
-		if (argc == 3) {
-			time = std::strtod(argv[2], NULL);
+	} else if (arcg >= 2 && strcmp(argv[1], "i") == 0) {
+		for (int i = 0; i < 10; i++) {
+			int value = ReadAnalog(0);
+			printf("%d\n", value);
 		}
 		
+	} else if (argc >= 2 && strcmp(argv[1], "r") == 0) {		
 		turnToLineClockwise();
 		
 		return 0;
