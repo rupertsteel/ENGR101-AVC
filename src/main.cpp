@@ -250,7 +250,7 @@ int main(int argc, char* argv[]) {
 		
 		analyseIrSensor(walledMazeData);
 		
-		if (walledMazeData.wallInFront) {
+		if (walledMazeData.wallInfront) {
 			if (walledMazeData.turnRight) {
 				set_motor(1, 51);
 				set_motor(2, -51);
