@@ -89,6 +89,7 @@ struct irData {
 	float last_error;
 	float signal;
 	
+	bool wallInfront;
 	bool turnLeft;
 	bool turnRight;
 };

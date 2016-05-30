@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
 	data.rows[1].rowNumber = 120;
 	data.rows[2].rowNumber = 180;
 	
-	walledMazeData.kp = 1.0f;
+	walledMazeData.kp = 5.0f;
 	walledMazeData.ki = 0.1f;
 	walledMazeData.kd = 0.1f;
 	
@@ -241,7 +241,7 @@ int main(int argc, char* argv[]) {
 		rightWheelTotalMovement += movement.rightWheelSpeed * data.dt;
 	}
 	
-	while (true) {
+	while (!walledMazeData.wallInfront) {
 		movementInfo movement;
 		movement.maxSpeed = maxSpeed;
 		movement.leftWheelSpeed = 1;

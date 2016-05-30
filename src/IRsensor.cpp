@@ -10,8 +10,10 @@ void analyseIrSensor(irData& data) {
 	
 	if (front > 300) {
 		data.signal = 0;
+		data.wallInfront = true;
 		// turn left or right
 	} else {
+		data.wallInfront = false;
 		data.turnLeft = false;
 		data.turnRight = false;
 		
