@@ -71,9 +71,9 @@ int main(int argc, char* argv[]) {
 	} else if (argc == 2 && strcmp(argv[1], "c") == 0) {
 		take_picture();
 		display_picture(10, 0);
-	} else if (arcg >= 2 && strcmp(argv[1], "i") == 0) {
+	} else if (argc >= 2 && strcmp(argv[1], "i") == 0) {
 		for (int i = 0; i < 10; i++) {
-			int value = ReadAnalog(0);
+			int value = read_analog(0);
 			printf("%d\n", value);
 		}
 		
