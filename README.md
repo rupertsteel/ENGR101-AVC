@@ -12,7 +12,7 @@ We will be planing on using unit testing later on.
 
 The project plan is in google docs.
 
-The IP for the pi is 10.140.128.238
+The IP for the pi is 10.140.69.232
 
 <h1>Weekly Checklist</h1>
 
