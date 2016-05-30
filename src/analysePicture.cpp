@@ -69,13 +69,13 @@ void analysePicture(pictureAnalysisData& data) {
 	
 	data.isThereLineToFront = (data.rows[0].rightMostPixel - data.rows[0].leftMostPixel) > 20;
 	
-	if (data.rows[0].leftMostPixel == 320) {
+	if (data.rows[0].leftMostPixel == 320 || data.rows[2].leftMostPixel == 320) {
 		data.isThereLineToLeft = false;
 	} else {
 		data.isThereLineToLeft = ((data.rows[0].leftMostPixel + data.rows[2].leftMostPixel) / 2) > (data.rows[1].leftMostPixel + 80);
 	}
 	
-	if (data.rows[0].rightMostPixel == 0) {
+	if (data.rows[0].rightMostPixel == 0 || data.rows[2].rightMostPixel) {
 		data.isThereLineToRight = false;
 	} else {
 		data.isThereLineToRight = ((data.rows[0].rightMostPixel + data.rows[2].rightMostPixel) / 2) < (data.rows[1].rightMostPixel - 80);
