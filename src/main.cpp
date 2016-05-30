@@ -255,7 +255,7 @@ int main(int argc, char* argv[]) {
 			movement.leftWheelSpeed += walledMazeData.signal * 0.001f;
 		}
 		
-		std::this_thread::sleep_for(std::chrono::milliseconds(20));
+		Sleep(0, 20000);
 	}
 	// walled maze code
 	
