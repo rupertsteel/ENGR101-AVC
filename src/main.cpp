@@ -5,6 +5,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <algorithm>
+#include <thread>
 
 void handle_signal(int signal) {
 	if (signal == SIGINT) {
@@ -248,6 +249,25 @@ int main(int argc, char* argv[]) {
 		movement.rightWheelSpeed = 1;
 		
 		analyseIrSensor(walledMazeData);
+		
+		if (walledMazeData.wallInFront) {
+			if (walledMazeData.turnRight) {
+				set_motor(1, 51);
+				set_motor(2, -51);
+	
+				std::this_thread::sleep_for(std::chrono::milliseconds(300));
+				
+				continue;
+			}
+			if (walledMazeData.turnLeft) {
+				set_motor(1, -51);
+				set_motor(2, 51);
+	
+				std::this_thread::sleep_for(std::chrono::milliseconds(300));
+				
+				continue;
+			}
+		}
 		
 		if (walledMazeData.signal < 0) {
 			movement.rightWheelSpeed += -walledMazeData.signal * 0.001f;
