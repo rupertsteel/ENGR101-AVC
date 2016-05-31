@@ -46,7 +46,7 @@ void analysePicture(pictureAnalysisData& data) {
 			}
 		}
 		
-		if (redCount > blueCount + 100) {
+		if (redCount > 250) {
 			// we are on the end
 			data.rows[i].isLineMazeEnd = true;
 		}
